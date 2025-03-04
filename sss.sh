@@ -31,7 +31,7 @@ _spf() {
       SEQNUM=$(echo "$SEQNUM+1" | bc)
 
       echo "[INFO] Combining 100 files from sequence #$SEQNUM to /tmp/${SEQNUM}_${OUTPUT_NAME}"
-      convert $CURRENT_FILELIST -evaluate-sequence Max /tmp/"$SEQNUM"_"$OUTPUT_NAME"
+      magick $CURRENT_FILELIST -evaluate-sequence Max /tmp/"$SEQNUM"_"$OUTPUT_NAME"
 
       _spf "$FOLDER"
    fi
@@ -41,7 +41,7 @@ _spf "$FRAME_DIR"
 unset FOLDER FILELIST SEQNUM
 
 echo "[INFO] Combining rendered images into $OUTPUT_NAME"
-convert /tmp/*_$OUTPUT_NAME -evaluate-sequence Max "$OUTPUT_NAME"
+magick /tmp/*_$OUTPUT_NAME -evaluate-sequence Max "$OUTPUT_NAME"
 
 echo "[INFO] Removing /tmp/*_$OUTPUT_NAME"
 rm /tmp/*_$OUTPUT_NAME

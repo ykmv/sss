@@ -6,7 +6,7 @@ It combines frames from a video into one image, so that it would be easier to fi
 First of all, using ffmpeg you have to extract frames from a video with a pattern.
 ```
 $ mkdir frame
-$ ffmpeg video.mp4 frame/%5d.png
+$ ffmpeg -i video.mp4 frame/%5d.png
 ```
 Then, using this script, extracted frames will be combined into one image.
 ```
